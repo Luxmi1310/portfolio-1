@@ -7,6 +7,9 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for Social Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     /* Global Styles */
@@ -264,6 +267,157 @@
       color: #fff;
     }
 
+    /* ===================== SOCIAL ICONS STYLES ===================== */
+    
+    /* Social Icons Container */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Individual Social Icon Link */
+    .social-icon {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(187, 134, 252, 0.15);
+      border: 2px solid #bb86fc;
+      color: #bb86fc;
+      font-size: 1.5rem;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    /* Background animation on hover */
+    .social-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #bb86fc, #9a65d9);
+      border-radius: 50%;
+      transition: left 0.5s ease;
+      z-index: -1;
+    }
+
+    /* Icon hover effect */
+    .social-icon:hover {
+      transform: translateY(-8px) scale(1.2);
+      color: #fff;
+      box-shadow: 0 15px 40px rgba(187, 134, 252, 0.6);
+      border-color: #9a65d9;
+    }
+
+    .social-icon:hover::before {
+      left: 0;
+    }
+
+    /* Floating animation */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .social-icon {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .social-icon:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .social-icon:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .social-icon:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .social-icon:nth-child(4) {
+      animation-delay: 0.6s;
+    }
+
+    .social-icon:nth-child(5) {
+      animation-delay: 0.8s;
+    }
+
+    /* Ripple effect on hover */
+    .social-icon::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .social-icon:hover::after {
+      width: 100px;
+      height: 100px;
+    }
+
+    /* Tooltip on hover */
+    .social-icon .tooltip {
+      position: absolute;
+      bottom: -40px;
+      background: #bb86fc;
+      color: #1e003b;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .social-icon:hover .tooltip {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Icon color variations */
+    .social-icon.github {
+      --color: #ffffff;
+    }
+
+    .social-icon.linkedin {
+      --color: #0a66c2;
+    }
+
+    .social-icon.twitter {
+      --color: #1da1f2;
+    }
+
+    .social-icon.instagram {
+      --color: #e4405f;
+    }
+
+    .social-icon.email {
+      --color: #ea4335;
+    }
+
     /* Footer */
     footer {
       text-align: center;
@@ -318,25 +472,34 @@
         display: flex;
       }
 	  .hamburger.active div:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger.active div:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active div:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .hamburger.active div:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
 
-/* Animate nav menu sliding down */
-nav ul {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-nav ul.active {
-  max-height: 300px; /* enough to show all links */
-}
+      /* Animate nav menu sliding down */
+      nav ul {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+      nav ul.active {
+        max-height: 300px; /* enough to show all links */
+      }
 
+      .social-icons {
+        gap: 1.5rem;
+      }
+
+      .social-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -364,6 +527,30 @@ nav ul.active {
       <h1>Hello, I'm <span>Tech.builder_13</span></h1>
       <p>Creative Developer | UI/UX Designer | Tech Enthusiast</p>
       <a href="#projects" class="btn">Explore My Work</a>
+      
+      <!-- SOCIAL ICONS SECTION -->
+      <div class="social-icons">
+        <a href="https://github.com" class="social-icon github" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+          <span class="tooltip">GitHub</span>
+        </a>
+        <a href="https://linkedin.com" class="social-icon linkedin" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+          <span class="tooltip">LinkedIn</span>
+        </a>
+        <a href="https://twitter.com" class="social-icon twitter" target="_blank" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+          <span class="tooltip">Twitter</span>
+        </a>
+        <a href="https://instagram.com" class="social-icon instagram" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+          <span class="tooltip">Instagram</span>
+        </a>
+        <a href="mailto:your-email@example.com" class="social-icon email" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+          <span class="tooltip">Email</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -447,10 +634,11 @@ nav ul.active {
       alert("Thanks for reaching out!");
       this.reset();
     });
-	hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("active");
-  navUL.classList.toggle("active");
-});
+    
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navUL.classList.toggle("active");
+    });
 
   </script>
 
